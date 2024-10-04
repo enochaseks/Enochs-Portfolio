@@ -5,6 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Enoch Asekomhe</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styling for the project list and thumbnails */
+        .projects-list {
+            list-style-type: none; /* Remove bullet points */
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap; /* Make projects wrap to the next line */
+            justify-content: center; /* Center the projects */
+        }
+
+        .projects-list li {
+            position: relative; /* Allow positioning inside the project box */
+            margin: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            width: 350px; /* Width for each project block */
+            height: 200px; /* Rectangular height for each project block */
+            display: flex;
+            align-items: flex-end; /* Align content to the bottom */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add slight shadow */
+            text-align: center; /* Center-align text */
+            background-size: cover; /* Ensure the image covers the box */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent repetition */
+            overflow: hidden; /* Hide overflow */
+            color: #fff; /* White text for contrast */
+        }
+
+        /* Individual project backgrounds */
+        .projects-list li:nth-child(1) {
+            background-image: url('Images/Yumm Yumm.png');
+        }
+        .projects-list li:nth-child(2) {
+            background-image: url('Images/Peoples News.png');
+        }
+        .projects-list li:nth-child(3) {
+            background-image: url('Images/deep ol clean.png');
+        }
+        .projects-list li:nth-child(4) {
+            background-image: url('Images/folo.png');
+        }
+
+        /* Styling for the project content */
+        .project-content {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent background for text */
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .project-link {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 18px; /* Increased font size */
+        }
+
+        .project-link:hover {
+            text-decoration: underline; /* Add underline on hover */
+        }
+
+        .projects-list span {
+            display: block; /* Make the span take full width */
+            margin-top: 10px;
+            color: #ddd; /* Light color for additional text */
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -23,17 +95,30 @@
     <main>
         <h2>Projects</h2>
         <ul class="projects-list">
-            <li><strong>Yumm Yumm</strong><br> 
-                <a href="https://enochaseks.github.io/Yum-Yumm/" class="project-link">View Project</a> <span>(First ever website, better viewing experience on a laptop or computer)</span>
+            <li>
+                <div class="project-content">
+                    <strong>Yumm Yumm</strong><br> 
+                    <a href="https://enochaseks.github.io/Yum-Yumm/" class="project-link">View Project</a> 
+                    <span>(First ever website, better viewing experience on a laptop or computer)</span>
+                </div>
             </li>
-            <li><strong>The Peoples News</strong><br> 
-                <a href="https://enochaseks.github.io/The-People-News/" class="project-link">View Project</a>
+            <li>
+                <div class="project-content">
+                    <strong>The Peoples News</strong><br> 
+                    <a href="https://enochaseks.github.io/The-People-News/" class="project-link">View Project</a>
+                </div>
             </li>
-            <li><strong>Deep Ol' Clean</strong><br> 
-                <a href="https://enochaseks.github.io/deep-ol-clean/index.html" class="project-link">View Project</a>
+            <li>
+                <div class="project-content">
+                    <strong>Deep Ol' Clean</strong><br> 
+                    <a href="https://enochaseks.github.io/deep-ol-clean/index.html" class="project-link">View Project</a>
+                </div>
             </li>
-            <li><strong>Folo (App)</strong><br> 
-                <span class="project-link">This is currently under production and will be available soon.</span>
+            <li>
+                <div class="project-content">
+                    <strong>Folo (App)</strong><br> 
+                    <span>Under Development</span>
+                </div>
             </li>
         </ul>
     </main>
