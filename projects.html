@@ -5,9 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Enoch Asekomhe</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styles for the zombie */
+        .zombie {
+            display: none; /* Initially hidden */
+            position: fixed;
+            bottom: -200px; /* Start position off the screen */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background-image: url('images/zombie.png'); /* Zombie image */
+            background-size: cover; /* Cover the entire div with the image */
+            z-index: 1000; /* Ensure it's on top of everything */
+            animation: crawl-out 2s forwards; /* Animation to crawl out */
+        }
+
+        @keyframes crawl-out {
+            0% {
+                bottom: -200px; /* Start off-screen */
+            }
+            50% {
+                bottom: 20px; /* Halfway point */
+                transform: translateX(-50%) rotate(10deg);
+            }
+            100% {
+                bottom: 0; /* Final position */
+                transform: translateX(-50%) rotate(0deg);
+            }
+        }
+
+        /* Scary background overlay */
+        .overlay {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
+            z-index: 999; /* Ensure it's below the zombie */
+        }
+
+        /* Styles for the button */
+        #celebrateButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <header>
+        <audio id="zombieSound" src="zombiesound.wav" preload="auto"></audio>
         <h1>Enoch Asekomhe's Portfolio</h1>
         <nav>
             <ul>
@@ -15,7 +65,7 @@
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="skills.html">Skills</a></li>
                 <li><a href="contact.html">Contact Me</a></li>
-                 <li><a href="assets/ENOCH ASEKOMHE CV SEPTEMBER.pdf" download>View My CV</a></li>
+                <li><a href="assets/ENOCH ASEKOMHE CV SEPTEMBER.pdf" download>View My CV</a></li>
             </ul>
         </nav>
     </header>
@@ -36,10 +86,53 @@
                 <span class="project-link">This is currently under production and will be available soon.</span>
             </li>
         </ul>
+
+        <!-- Scary Zombie Pop-up -->
+        <div class="overlay" id="overlay"></div>
+        <div class="zombie" id="zombie"></div>
+        <button onclick="crawlOut()">Show Zombie!</button>
+
     </main>
     
     <footer>
         <p>&copy; 2024 Enoch Asekomhe. All rights reserved.</p>
     </footer>
+    
+    <script>
+        // Function to show the zombie with an overlay
+        function showZombie() {
+            const zombie = document.getElementById('zombie');
+            const overlay = document.getElementById('overlay');
+
+            // Show overlay and zombie
+            overlay.style.display = 'block'; 
+            zombie.style.display = 'block'; // Show the zombie
+            zombie.style.animation = 'crawl-out 2s forwards'; // Play the crawl-out animation
+
+            // Fade out after 2 seconds
+            setTimeout(() => {
+                overlay.style.display = 'none'; // Hide overlay after animation
+                zombie.style.display = 'none'; // Hide zombie after animation
+            }, 2000); // Match the animation duration
+        }
+
+        // Attach the zombie function to the button
+        document.getElementById('celebrateButton').addEventListener('click', function() {
+            showZombie();
+        });
+
+        function crawlOut() {
+    const zombie = document.getElementById('zombie');
+    const sound = document.getElementById('zombieSound');
+
+    // Show the zombie and play the sound
+    zombie.style.display = 'block';
+    sound.play();
+
+    // Add your animation logic here
+}
+
+    </script>
 </body>
 </html>
+
