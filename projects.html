@@ -6,50 +6,6 @@
     <title>Projects - Enoch Asekomhe</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<style>
-    /* Add styles for the scary face */
-    .scary-face {
-        display: none; /* Initially hidden */
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 200px;
-        height: 200px;
-        background-color: #ff5733; /* Scary color */
-        border-radius: 50%;
-        box-shadow: 0 0 20px rgba(0,0,0,0.5);
-        text-align: center;
-        line-height: 200px; /* Center the text */
-        color: white;
-        font-size: 24px;
-        font-weight: bold;
-        animation: pop-out 0.5s forwards; /* Animation on pop out */
-    }
-
-    @keyframes pop-out {
-        0% {
-            transform: translate(-50%, -50%) scale(0);
-        }
-        50% {
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-        100% {
-            transform: translate(-50%, -50%) scale(1);
-        }
-    }
-
-    /* Animation for fade-out */
-    @keyframes fade-out {
-        0% {
-            opacity: 1;
-        }
-        100% {
-            opacity: 0;
-            display: none; /* Hide after fading out */
-        }
-    }
-</style>
 <body>
     <header>
         <h1>Enoch Asekomhe's Portfolio</h1>
@@ -80,40 +36,10 @@
                 <span class="project-link">This is currently under production and will be available soon.</span>
             </li>
         </ul>
-        <button id="celebrateButton">Scare Me!</button>
-        
-        <div class="scary-face" id="scaryFace">😱</div>
     </main>
     
     <footer>
         <p>&copy; 2024 Enoch Asekomhe. All rights reserved.</p>
     </footer>
-    <script>
-        // Function to show the scary face with an overlay
-        function showScaryFace() {
-            const scaryFace = document.getElementById('scaryFace');
-            const overlay = document.getElementById('overlay');
-
-            // Show overlay and scary face
-            overlay.style.display = 'block'; 
-            scaryFace.style.display = 'block'; // Show the scary face
-            scaryFace.style.animation = 'pop-out 0.5s forwards'; // Play the pop-out animation
-
-            // Fade out after 1.5 seconds
-            setTimeout(() => {
-                scaryFace.style.animation = 'fade-out 0.5s forwards';
-                overlay.style.animation = 'fade-out 0.5s forwards'; // Fade out overlay
-                setTimeout(() => {
-                    scaryFace.style.display = 'none'; // Hide after fade out
-                    overlay.style.display = 'none'; // Hide overlay after fade out
-                }, 500); // Match the fade-out duration
-            }, 1500); // Time to show the scary face
-        }
-
-        // Attach the scary face function to the button
-        document.getElementById('celebrateButton').addEventListener('click', function() {
-            showScaryFace();
-        });
-    </script>
 </body>
 </html>
