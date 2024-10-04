@@ -6,6 +6,69 @@
     <title>About Me - Enoch Asekomhe</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        .about-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .about-container {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* Make the image circular */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .speech-bubble {
+            max-width: 400px;
+            padding: 15px;
+            border-radius: 15px;
+            background: #f0f0f0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+
+        .speech-bubble::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -20px; /* Position it to the left */
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-right-color: #f0f0f0; /* Match the background of the speech bubble */
+        }
+
+        .about-text {
+            margin-top: 15px;
+        }
+
+        #celebrateButton {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #celebrateButton:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -23,16 +86,15 @@
     
     <main class="about-section">
         <div class="about-container">
-            <img src="Images/Enoch.jpg" alt="Enoch Asekomhe" class="profile-pic">
-            <div class="about-text">
-                <h2>Enoch Asekomhe (Software Engineer)</h2>
-                <p>
-                    Hello, My name is Enoch Asekomhe, I am an aspiring software engineer in the United Kingdom, looking for a role in Front End Development. I have developed and created amazing websites for family and clients using programming languages and frameworks like React.js, Node.js, Bootstrap, Tailwind css, Flutter, TypeScript, HTML, CSS, JavaScript, and TypeScript.
-                </p>
-                <p>
-                    I also have designing skills as I have used programs like Figma and Adobe XD to create interesting UX applications. I have more than 3 years of experience in Front End Development and 5 years in designing. I am willing to adapt and learn more in an amazing and sustainable company, looking to progress in my career.
-                </p>
-                <button id="celebrateButton">Celebrate!</button> <!-- Added ID for easy access -->
+            <img src="images/Enoch.jpg" alt="Enoch Asekomhe" class="profile-pic">
+            
+            <!-- Text bubble added here -->
+            <div class="speech-bubble">
+                Hello, My name is Enoch Asekomhe, I am an aspiring software engineer in the United Kingdom, looking for a role in Front End Development. I have developed and created amazing websites for family and clients using frameworks like React.js, Node.js, Flutter, TypeScript, HTML, CSS, JavaScript, and TypeScript.
+                <div class="about-text">
+                    I also have designer skills as I have used programs like Figma and Adobe XD to create interesting applications. I have more than 3 years of experience in Front End Development and 5 years in designing. I am willing to adapt and learn more in an amazing and sustainable company, looking to progress in my career.
+                </div>
+                <button id="celebrateButton">Celebrate!</button> <!-- Button inside the speech bubble -->
             </div>
         </div>
     </main>
@@ -42,31 +104,31 @@
     </footer>
 
     <script>
-            // JavaScript for Confetti Animation
-            function launchConfetti() {
-                var duration = 5 * 1000; // 5 seconds
-                var animationEnd = Date.now() + duration;
-                var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+        // JavaScript for Confetti Animation
+        function launchConfetti() {
+            var duration = 5 * 1000; // 5 seconds
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
-                function randomInRange(min, max) {
-                    return Math.random() * (max - min) + min;
-                }
-
-                var interval = setInterval(function() {
-                    var timeLeft = animationEnd - Date.now();
-
-                    if (timeLeft <= 0) {
-                        return clearInterval(interval);
-                    }
-
-                    var particleCount = 50 * (timeLeft / duration);
-                    confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
-                    confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
-                }, 250);
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
             }
 
-            // Attach the confetti function to the button
-            document.getElementById('celebrateButton').addEventListener('click', launchConfetti);
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                var particleCount = 50 * (timeLeft / duration);
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+        }
+
+        // Attach the confetti function to the button
+        document.getElementById('celebrateButton').addEventListener('click', launchConfetti);
     </script>
 </body>
 </html>
