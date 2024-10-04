@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me - Enoch Asekomhe</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </head>
 <body>
     <header>
@@ -15,14 +16,14 @@
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="skills.html">Skills</a></li>
                 <li><a href="contact.html">Contact Me</a></li>
-                 <li><a href="assets/ENOCH ASEKOMHE CV SEPTEMBER.pdf" download>View My CV</a></li>
+                <li><a href="assets/ENOCH ASEKOMHE CV SEPTEMBER.pdf" download>View My CV</a></li>
             </ul>
         </nav>
     </header>
     
     <main class="about-section">
         <div class="about-container">
-            <img src="Images/Enoch.jpg" alt="Enoch Asekomhe" class="profile-pic">
+            <img src="images/Enoch.jpg" alt="Enoch Asekomhe" class="profile-pic">
             <div class="about-text">
                 <h2>Enoch Asekomhe (Software Engineer)</h2>
                 <p>
@@ -31,6 +32,7 @@
                 <p>
                     I also have designer skills as I have used programs like Figma and Adobe XD to create interesting applications. I have more than 3 years of experience in Front End Development and 5 years in designing. I am willing to adapt and learn more in an amazing and sustainable company, looking to progress in my career.
                 </p>
+                <button id="celebrateButton">Celebrate!</button> <!-- Added ID for easy access -->
             </div>
         </div>
     </main>
@@ -38,5 +40,33 @@
     <footer>
         <p>&copy; 2024 Enoch Asekomhe. All rights reserved.</p>
     </footer>
+
+    <script>
+            // JavaScript for Confetti Animation
+            function launchConfetti() {
+                var duration = 5 * 1000; // 5 seconds
+                var animationEnd = Date.now() + duration;
+                var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+                function randomInRange(min, max) {
+                    return Math.random() * (max - min) + min;
+                }
+
+                var interval = setInterval(function() {
+                    var timeLeft = animationEnd - Date.now();
+
+                    if (timeLeft <= 0) {
+                        return clearInterval(interval);
+                    }
+
+                    var particleCount = 50 * (timeLeft / duration);
+                    confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+                    confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+                }, 250);
+            }
+
+            // Attach the confetti function to the button
+            document.getElementById('celebrateButton').addEventListener('click', launchConfetti);
+    </script>
 </body>
 </html>
