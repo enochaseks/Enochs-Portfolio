@@ -5,59 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Enoch Asekomhe</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Styles for the zombie */
-        .zombie {
-            display: none; /* Initially hidden */
-            position: fixed;
-            bottom: -200px; /* Start position off the screen */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 100px;
-            background-image: url('images/zombie.png'); /* Zombie image */
-            background-size: cover; /* Cover the entire div with the image */
-            z-index: 1000; /* Ensure it's on top of everything */
-            animation: crawl-out 2s forwards; /* Animation to crawl out */
-        }
-
-        @keyframes crawl-out {
-            0% {
-                bottom: -200px; /* Start off-screen */
-            }
-            50% {
-                bottom: 20px; /* Halfway point */
-                transform: translateX(-50%) rotate(10deg);
-            }
-            100% {
-                bottom: 0; /* Final position */
-                transform: translateX(-50%) rotate(0deg);
-            }
-        }
-
-        /* Scary background overlay */
-        .overlay {
-            display: none; /* Initially hidden */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
-            z-index: 999; /* Ensure it's below the zombie */
-        }
-
-        /* Styles for the button */
-        #celebrateButton {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin-top: 20px;
-        }
-    </style>
 </head>
+<style>
+    /* Add styles for the scary face */
+    .scary-face {
+        display: none; /* Initially hidden */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: 200px;
+        background-color: #ff5733; /* Scary color */
+        border-radius: 50%;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        text-align: center;
+        line-height: 200px; /* Center the text */
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        animation: pop-out 0.5s forwards; /* Animation on pop out */
+    }
+
+    @keyframes pop-out {
+        0% {
+            transform: translate(-50%, -50%) scale(0);
+        }
+        50% {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(1);
+        }
+    }
+
+    /* Animation for fade-out */
+    @keyframes fade-out {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            display: none; /* Hide after fading out */
+        }
+    }
+</style>
 <body>
     <header>
-        <audio id="zombieSound" src="zombiesound.wav" preload="auto"></audio>
         <h1>Enoch Asekomhe's Portfolio</h1>
         <nav>
             <ul>
@@ -86,53 +80,40 @@
                 <span class="project-link">This is currently under production and will be available soon.</span>
             </li>
         </ul>
-
-        <!-- Scary Zombie Pop-up -->
-        <div class="overlay" id="overlay"></div>
-        <div class="zombie" id="zombie"></div>
-        <button onclick="crawlOut()">Show Zombie!</button>
-
+        <button id="celebrateButton">Scare Me!</button>
+        
+        <div class="scary-face" id="scaryFace">😱</div>
     </main>
     
     <footer>
         <p>&copy; 2024 Enoch Asekomhe. All rights reserved.</p>
     </footer>
-    
     <script>
-        // Function to show the zombie with an overlay
-        function showZombie() {
-            const zombie = document.getElementById('zombie');
+        // Function to show the scary face with an overlay
+        function showScaryFace() {
+            const scaryFace = document.getElementById('scaryFace');
             const overlay = document.getElementById('overlay');
 
-            // Show overlay and zombie
+            // Show overlay and scary face
             overlay.style.display = 'block'; 
-            zombie.style.display = 'block'; // Show the zombie
-            zombie.style.animation = 'crawl-out 2s forwards'; // Play the crawl-out animation
+            scaryFace.style.display = 'block'; // Show the scary face
+            scaryFace.style.animation = 'pop-out 0.5s forwards'; // Play the pop-out animation
 
-            // Fade out after 2 seconds
+            // Fade out after 1.5 seconds
             setTimeout(() => {
-                overlay.style.display = 'none'; // Hide overlay after animation
-                zombie.style.display = 'none'; // Hide zombie after animation
-            }, 2000); // Match the animation duration
+                scaryFace.style.animation = 'fade-out 0.5s forwards';
+                overlay.style.animation = 'fade-out 0.5s forwards'; // Fade out overlay
+                setTimeout(() => {
+                    scaryFace.style.display = 'none'; // Hide after fade out
+                    overlay.style.display = 'none'; // Hide overlay after fade out
+                }, 500); // Match the fade-out duration
+            }, 1500); // Time to show the scary face
         }
 
-        // Attach the zombie function to the button
+        // Attach the scary face function to the button
         document.getElementById('celebrateButton').addEventListener('click', function() {
-            showZombie();
+            showScaryFace();
         });
-
-        function crawlOut() {
-    const zombie = document.getElementById('zombie');
-    const sound = document.getElementById('zombieSound');
-
-    // Show the zombie and play the sound
-    zombie.style.display = 'block';
-    sound.play();
-
-    // Add your animation logic here
-}
-
     </script>
 </body>
 </html>
-
