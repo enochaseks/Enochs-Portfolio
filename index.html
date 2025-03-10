@@ -22,12 +22,17 @@
         }
 
         .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%; /* Make the image circular */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transform: scale(1.1);
-        }
+         width: 150px;
+         height: 150px;
+         border-radius: 50%;
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+         transition: transform 0.3s ease; /* Add transition for smooth effect */
+         }
+
+        .profile-pic:hover {
+         transform: scale(1.1); /* Zoom in by 10% */
+         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Optional: enhance shadow on hover */
+         }
 
         .speech-bubble {
             max-width: 400px;
